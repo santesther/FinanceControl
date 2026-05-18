@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <%= link_to 'FINANCE CONTROL APP', root_path, class: 'navbar-brand' %>
+    <%= link_to 'Home', root_path, class: 'navbar-link' %>
+  </div>
+  <div class="navbar-right">
+    <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'navbar-logout' %>
+  </div>
+</nav>
