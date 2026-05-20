@@ -1,20 +1,58 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `bin/rails
-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
-#
-# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_17_230044) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_20_195341) do
+  create_table "alerts", force: :cascade do |t|
+    t.string "alert_type"
+    t.string "channel"
+    t.datetime "created_at", null: false
+    t.integer "expense_id", null: false
+    t.text "message"
+    t.datetime "sent_at"
+    t.string "status"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["expense_id"], name: "index_alerts_on_expense_id"
+    t.index ["user_id"], name: "index_alerts_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.string "icon"
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.date "date"
+    t.string "description"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "monthly_goals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.decimal "current_balance"
+    t.integer "month"
+    t.decimal "savings_target"
+    t.decimal "spending_limit"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "year"
+    t.index ["user_id", "month", "year"], name: "index_monthly_goals_on_user_id_and_month_and_year", unique: true
+    t.index ["user_id"], name: "index_monthly_goals_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "notification_channel"
+    t.string "phone_number"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
@@ -22,4 +60,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_17_230044) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "alerts", "expenses"
+  add_foreign_key "alerts", "users"
+  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "users"
+  add_foreign_key "monthly_goals", "users"
 end

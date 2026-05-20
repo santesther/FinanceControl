@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  expense: one
+  alert_type: MyString
+  message: MyText
+  channel: MyString
+  status: MyString
+  sent_at: 2026-05-20 16:51:39
+
+two:
+  user: two
+  expense: two
+  alert_type: MyString
+  message: MyText
+  channel: MyString
+  status: MyString
+  sent_at: 2026-05-20 16:51:39
