@@ -1,26 +1,38 @@
-<div class="login-container">
-  <div class="login-form">
-    <h2>Log in</h2>
+<div class="devise-container">
+  <div class="devise-card">
+    <div class="devise-brand">
+      <div class="devise-brand-icon">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="12" height="10" rx="2"/>
+          <path d="M2 7h12"/>
+          <path d="M6 11h4"/>
+        </svg>
+      </div>
+      <span class="devise-brand-name">FinCtrl</span>
+    </div>
+    <h2>Bem-vindo de volta</h2>
+    <p class="devise-subtitle">Acesse sua conta para continuar</p>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "seu@email.com" %>
       </div>
       <div class="field">
         <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "••••••••" %>
       </div>
       <% if devise_mapping.rememberable? %>
-        <div class="field">
+        <div class="field remember-field">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, class: "checkbox-label" %>
+          <%= f.label :remember_me, "Lembrar de mim", class: "checkbox-label" %>
         </div>
       <% end %>
       <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.submit "Entrar" %>
       </div>
     <% end %>
-    <div class="login-links">
+    <div class="devise-divider"><span>ou</span></div>
+    <div class="devise-links">
       <%= render "devise/shared/links" %>
     </div>
   </div>

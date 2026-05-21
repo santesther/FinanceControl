@@ -1,0 +1,261 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.devise-container {
+  width: 100%;
+}
+
+.devise-card {
+  background: #ffffff;
+  border: 0.5px solid #D9E2FF;
+  border-radius: 16px;
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  max-width: 460px;
+  min-width: 320px;
+  box-shadow: 0 4px 24px rgba(43, 78, 222, 0.06);
+}
+
+.devise-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.devise-brand-icon {
+  width: 32px;
+  height: 32px;
+  background: #F0F4FF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.devise-brand-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: #2B4EDE;
+}
+
+.devise-brand-name {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1A2366;
+}
+
+.devise-card h2 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1A2366;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.devise-subtitle {
+  font-size: 13px;
+  color: #6B7EBD;
+  margin-bottom: 1.75rem;
+}
+
+.field {
+  margin-bottom: 1.1rem;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6B7EBD;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="text"] {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #1A2366;
+  background: #F7F9FF;
+  border: 0.5px solid #D9E2FF;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+
+.field input:focus {
+  border-color: #2B4EDE;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(43, 78, 222, 0.1);
+}
+
+.field input::placeholder {
+  color: #A8B4D8;
+}
+
+.field .password-hint {
+  font-size: 11px;
+  color: #A8B4D8;
+  margin-top: 5px;
+}
+
+.field.remember-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.25rem;
+}
+
+.field.remember-field input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #2B4EDE;
+  cursor: pointer;
+}
+
+.field.remember-field .checkbox-label,
+.field.remember-field label {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6B7EBD;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.actions {
+  margin-top: 1.5rem;
+}
+
+.actions input[type="submit"] {
+  width: 100%;
+  height: 42px;
+  background: #2B4EDE;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.actions input[type="submit"]:hover {
+  background: #1A3DBF;
+}
+
+.actions input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+.devise-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1.5rem 0;
+}
+
+.devise-divider::before,
+.devise-divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: #D9E2FF;
+}
+
+.devise-divider span {
+  font-size: 11px;
+  color: #A8B4D8;
+  white-space: nowrap;
+}
+
+.devise-links {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.devise-links a {
+  font-size: 13px;
+  color: #2B4EDE;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.devise-links a:hover {
+  color: #1A3DBF;
+  text-decoration: underline;
+}
+
+#error_explanation {
+  background: #FFF5F5;
+  border: 0.5px solid #FFBBBB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 1.25rem;
+}
+
+#error_explanation h2 {
+  font-size: 12px;
+  font-weight: 500;
+  color: #A04040;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+#error_explanation ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#error_explanation ul li {
+  font-size: 13px;
+  color: #A04040;
+  padding-left: 12px;
+  position: relative;
+}
+
+#error_explanation ul li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #CC6666;
+}
+
+.alert {
+  background: #FFF5F5;
+  border: 0.5px solid #FFBBBB;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #A04040;
+  margin-bottom: 1rem;
+}
+
+.notice {
+  background: #F3FBF7;
+  border: 0.5px solid #A8D5B8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #3A7A55;
+  margin-bottom: 1rem;
+}
