@@ -1,7 +1,7 @@
 class CreateMonthlyGoals < ActiveRecord::Migration[8.1]
   def change
     create_table :monthly_goals, force: :cascade do |t|
-      t.integer :user_id
+      t.integer :user_id, null: false, foreign_key: true
       t.integer :year
       t.integer :month
       t.decimal :savings_target
