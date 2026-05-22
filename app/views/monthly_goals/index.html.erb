@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Monthly goals" %>
+
+<h1>Monthly goals</h1>
+
+<div id="monthly_goals">
+  <% @monthly_goals.each do |monthly_goal| %>
+    <%= render monthly_goal %>
+    <p>
+      <%= link_to "Show this monthly goal", monthly_goal %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New monthly goal", new_monthly_goal_path %>

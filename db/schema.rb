@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_20_195341) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_22_153354) do
   create_table "alerts", force: :cascade do |t|
     t.string "alert_type"
     t.string "channel"
@@ -52,10 +52,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_20_195341) do
     t.decimal "savings_target"
     t.decimal "spending_limit"
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "year"
     t.index ["user_id", "month", "year"], name: "index_monthly_goals_on_user_id_and_month_and_year", unique: true
-    t.index ["user_id"], name: "index_monthly_goals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,5 +75,4 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_20_195341) do
   add_foreign_key "alerts", "users"
   add_foreign_key "expenses", "categories"
   add_foreign_key "expenses", "users"
-  add_foreign_key "monthly_goals", "users"
 end

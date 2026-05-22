@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @monthly_goal %>
+
+<div>
+  <%= link_to "Edit this monthly goal", edit_monthly_goal_path(@monthly_goal) %> |
+  <%= link_to "Back to monthly goals", monthly_goals_path %>
+
+  <%= button_to "Destroy this monthly goal", @monthly_goal, method: :delete %>
+</div>

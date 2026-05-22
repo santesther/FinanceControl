@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :monthly_goals
   resources :categories
   resources :expenses
   get "home/index"

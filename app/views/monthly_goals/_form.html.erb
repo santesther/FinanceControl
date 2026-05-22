@@ -1,0 +1,36 @@
+<%= form_with(model: monthly_goal) do |form| %>
+  <% if monthly_goal.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(monthly_goal.errors.count, "error") %> prohibited this monthly_goal from being saved:</h2>
+      <ul>
+        <% monthly_goal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div>
+    <%= form.label :year, style: "display: block" %>
+    <%= form.select :year, (Date.today.year - 1..Date.today.year + 1).to_a, { selected: Date.today.year } %>
+  </div>
+  <div>
+    <%= form.label :month, style: "display: block" %>
+    <%= form.select :month, Date::MONTHNAMES.compact.each_with_index.map { |name, i| [name, i + 1] }, { selected: Date.today.month } %>
+  </div>
+  <div>
+    <%= form.label :savings_target, style: "display: block" %>
+    <%= form.text_field :savings_target %>
+  </div>
+  <div>
+    <%= form.label :spending_limit, style: "display: block" %>
+    <%= form.text_field :spending_limit %>
+  </div>
+  <div>
+    <%= form.label :current_balance, style: "display: block" %>
+    <%= form.text_field :current_balance %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

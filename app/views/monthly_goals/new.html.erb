@@ -1,0 +1,11 @@
+<% content_for :title, "New monthly goal" %>
+
+<h1>New monthly goal</h1>
+
+<%= render "form", monthly_goal: @monthly_goal %>
+
+<br>
+
+<div>
+  <%= link_to "Back to monthly goals", monthly_goals_path %>
+</div>
