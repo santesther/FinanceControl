@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :alerts, only: [ :index, :show ]
   resources :monthly_goals
   resources :categories
   resources :expenses
