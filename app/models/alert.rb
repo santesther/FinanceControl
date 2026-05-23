@@ -6,7 +6,7 @@ class Alert < ApplicationRecord
 
   validates :message, presence: true
   validates :alert_type, presence: true
-  validates :channel, presence: true
+  validates :channel, inclusion: { in: %w[app whatsapp telegram], allow_blank: true }
 
   validates :status, presence: true, inclusion: { in: %w[pending sent failed] }
 end
