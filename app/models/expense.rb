@@ -1,6 +1,7 @@
 class Expense < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_many :alerts, dependent: :destroy
 
   after_create :check_spending_limit
 
