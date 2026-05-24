@@ -25,8 +25,14 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: "Expense was successfully created." }
-        format.json { render :show, status: :created, location: @expense }
+        pending_alert = current_user.alerts.where(status: "pending").order(created_at: :desc).first
+        if pending_alert
+          format.html { redirect_to expenses_path, alert: pending_alert.message, status: :see_other }
+          format.json { render :show, status: :created, location: @expense }
+        else
+          format.html { redirect_to expenses_path, notice: "Despesa registrada com sucesso.", status: :see_other }
+          format.json { render :show, status: :created, location: @expense }
+        end
       else
         format.html { render :new, status: :unprocessable_content }
         format.json { render json: @expense.errors, status: :unprocessable_content }

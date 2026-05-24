@@ -15,6 +15,16 @@
     <%= link_to "Monthly Goals", monthly_goals_path, class: "navbar-link" %>
   </div>
   <div class="navbar-right">
+    <% pending_alerts = current_user.alerts.where(status: "pending").count %>
+    <% if pending_alerts > 0 %>
+      <%= link_to alerts_path, class: "navbar-alerts" do %>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2a5 5 0 0 1 5 5v2l1 2H2l1-2V7a5 5 0 0 1 5-5z"/>
+          <path d="M6.5 13a1.5 1.5 0 0 0 3 0"/>
+        </svg>
+        <span class="navbar-alerts__badge"><%= pending_alerts %></span>
+      <% end %>
+    <% end %>
     <div class="navbar-user">
       <div class="navbar-avatar">
         <%= current_user.email[0].upcase %>
