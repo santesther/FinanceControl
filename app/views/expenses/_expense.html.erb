@@ -1,27 +1,14 @@
-<div id="<%= dom_id expense %>">
-  <div>
-    <strong>User:</strong>
-    <%= expense.user_id %>
+<div id="<%= dom_id expense %>" class="expense-row">
+  <div class="expense-row__icon">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B7EBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="12" height="9" rx="1.5"/>
+      <path d="M2 7h12"/>
+      <path d="M6 10.5h4"/>
+    </svg>
   </div>
-
-  <div>
-    <strong>Category:</strong>
-    <%= expense.category_id %>
+  <div class="expense-row__info">
+    <span class="expense-row__description"><%= expense.description %></span>
+    <span class="expense-row__meta"><%= expense.category.name %> · <%= expense.date.strftime("%d/%m/%Y") %></span>
   </div>
-
-  <div>
-    <strong>Description:</strong>
-    <%= expense.description %>
-  </div>
-
-  <div>
-    <strong>Amount:</strong>
-    <%= expense.amount %>
-  </div>
-
-  <div>
-    <strong>Date:</strong>
-    <%= expense.date %>
-  </div>
-
+  <span class="expense-row__amount">– R$ <%= number_with_precision(expense.amount, precision: 2, delimiter: ".", separator: ",") %></span>
 </div>

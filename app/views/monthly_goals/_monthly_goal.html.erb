@@ -1,32 +1,32 @@
-<div id="<%= dom_id monthly_goal %>">
-  <div>
-    <strong>User:</strong>
-    <%= monthly_goal.user_id %>
+<% month_names = %w[Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro] %>
+<div id="<%= dom_id monthly_goal %>" class="goal-card">
+  <div class="goal-card__header">
+    <div>
+      <div class="goal-card__period"><%= month_names[monthly_goal.month - 1] %> <%= monthly_goal.year %></div>
+    </div>
+    <div class="goal-card__total">
+      R$ <%= number_with_precision(monthly_goal.total_spent, precision: 2, delimiter: ".", separator: ",") %>
+      <span class="goal-card__limit">de R$ <%= number_with_precision(monthly_goal.spending_limit, precision: 2, delimiter: ".", separator: ",") %></span>
+    </div>
   </div>
-
-  <div>
-    <strong>Year:</strong>
-    <%= monthly_goal.year %>
+  <% pct = monthly_goal.percentage_spent %>
+  <div class="goal-progress">
+    <div class="goal-progress__bar">
+      <div class="goal-progress__fill <%= pct >= 100 ? 'goal-progress__fill--danger' : pct >= 80 ? 'goal-progress__fill--warning' : '' %>"
+           style="width: <%= [pct, 100].min %>%"></div>
+    </div>
+    <span class="goal-progress__label <%= pct >= 100 ? 'text-danger' : pct >= 80 ? 'text-warning' : 'text-muted' %>">
+      <%= pct %>% utilizado
+    </span>
   </div>
-
-  <div>
-    <strong>Month:</strong>
-    <%= monthly_goal.month %>
+  <div class="goal-card__stats">
+    <div class="goal-stat">
+      <span class="goal-stat__label">Meta de poupança</span>
+      <span class="goal-stat__value">R$ <%= number_with_precision(monthly_goal.savings_target, precision: 2, delimiter: ".", separator: ",") %></span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-stat__label">Saldo atual</span>
+      <span class="goal-stat__value"><%= monthly_goal.current_balance ? "R$ #{number_with_precision(monthly_goal.current_balance, precision: 2, delimiter: '.', separator: ',')}" : "—" %></span>
+    </div>
   </div>
-
-  <div>
-    <strong>Savings target:</strong>
-    <%= monthly_goal.savings_target %>
-  </div>
-
-  <div>
-    <strong>Spending limit:</strong>
-    <%= monthly_goal.spending_limit %>
-  </div>
-
-  <div>
-    <strong>Current balance:</strong>
-    <%= monthly_goal.current_balance %>
-  </div>
-
 </div>

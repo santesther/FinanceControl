@@ -1,37 +1,25 @@
-<div id="<%= dom_id alert %>">
-  <div>
-    <strong>User:</strong>
-    <%= alert.user_id %>
+<div id="<%= dom_id alert %>" class="alert-card <%= alert.alert_type == 'limit_exceeded' ? 'alert-card--danger' : 'alert-card--warning' %>">
+  <div class="alert-card__icon">
+    <% if alert.alert_type == "limit_exceeded" %>
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 2L14 13H2L8 2z"/>
+        <path d="M8 7v3"/>
+        <circle cx="8" cy="11.5" r="0.5" fill="currentColor"/>
+      </svg>
+    <% else %>
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8" cy="8" r="6"/>
+        <path d="M8 5v3"/>
+        <circle cx="8" cy="10.5" r="0.5" fill="currentColor"/>
+      </svg>
+    <% end %>
   </div>
-
-  <div>
-    <strong>Expense:</strong>
-    <%= alert.expense_id %>
+  <div class="alert-card__body">
+    <div class="alert-card__message"><%= alert.message %></div>
+    <div class="alert-card__meta">
+      <span class="badge badge--<%= alert.status %>"><%= alert.status %></span>
+      <span class="alert-card__channel"><%= alert.channel %></span>
+      <span class="alert-card__date"><%= alert.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+    </div>
   </div>
-
-  <div>
-    <strong>Alert type:</strong>
-    <%= alert.alert_type %>
-  </div>
-
-  <div>
-    <strong>Message:</strong>
-    <%= alert.message %>
-  </div>
-
-  <div>
-    <strong>Channel:</strong>
-    <%= alert.channel %>
-  </div>
-
-  <div>
-    <strong>Status:</strong>
-    <%= alert.status %>
-  </div>
-
-  <div>
-    <strong>Sent at:</strong>
-    <%= alert.sent_at %>
-  </div>
-
 </div>

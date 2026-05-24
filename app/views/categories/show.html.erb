@@ -1,10 +1,23 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @category %>
-
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
-  <%= button_to "Destroy this category", @category, method: :delete %>
+<% content_for :title, "Categoria" %>
+<div class="page-header">
+  <h1 class="page-title">Categoria</h1>
+  <%= link_to categories_path, class: "btn-back" do %>
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Voltar
+  <% end %>
+</div>
+<div class="detail-card">
+  <%= render @category %>
+  <div class="detail-fields">
+    <div class="detail-row">
+      <span class="detail-label">Despesas nesta categoria</span>
+      <span class="detail-value"><%= @category.expenses.count %></span>
+    </div>
+  </div>
+  <div class="detail-actions">
+    <%= link_to "Editar", edit_category_path(@category), class: "btn-ghost" %>
+    <%= button_to "Excluir", @category, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Tem certeza?" } } %>
+  </div>
 </div>

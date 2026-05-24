@@ -1,16 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Monthly goals" %>
-
-<h1>Monthly goals</h1>
-
-<div id="monthly_goals">
-  <% @monthly_goals.each do |monthly_goal| %>
-    <%= render monthly_goal %>
-    <p>
-      <%= link_to "Show this monthly goal", monthly_goal %>
-    </p>
+<% content_for :title, "Metas Mensais" %>
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Metas Mensais</h1>
+    <span class="page-subtitle">Acompanhe seus limites e objetivos de poupança</span>
+  </div>
+  <%= link_to "Nova meta", new_monthly_goal_path, class: "btn-primary" %>
+</div>
+<div class="goals-grid">
+  <% if @monthly_goals.empty? %>
+    <div class="empty-state">
+      <svg width="40" height="40" viewBox="0 0 16 16" fill="none" stroke="#6B7EBD" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8" cy="8" r="6"/>
+        <path d="M8 5v4l2.5 2.5"/>
+      </svg>
+      <p>Nenhuma meta cadastrada ainda.</p>
+      <%= link_to "Criar primeira meta", new_monthly_goal_path, class: "link" %>
+    </div>
+  <% else %>
+    <% @monthly_goals.each do |monthly_goal| %>
+      <div class="goals-grid__item">
+        <%= render monthly_goal %>
+        <div class="goal-actions">
+          <%= link_to "Ver", monthly_goal, class: "btn-ghost btn-ghost--sm" %>
+          <%= link_to "Editar", edit_monthly_goal_path(monthly_goal), class: "btn-ghost btn-ghost--sm" %>
+          <%= button_to "Excluir", monthly_goal, method: :delete, class: "btn-danger btn-danger--sm", form: { data: { turbo_confirm: "Tem certeza?" } } %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New monthly goal", new_monthly_goal_path %>

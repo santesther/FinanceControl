@@ -1,16 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Alerts" %>
-
-<h1>Alerts</h1>
-
-<div id="alerts">
-  <% @alerts.each do |alert| %>
-    <%= render alert %>
-    <p>
-      <%= link_to "Show this alert", alert %>
-    </p>
+<% content_for :title, "Alertas" %>
+<div class="page-header">
+  <h1 class="page-title">Alertas</h1>
+  <span class="page-subtitle">Notificações geradas automaticamente pelo sistema</span>
+</div>
+<div class="alerts-list">
+  <% if @alerts.empty? %>
+    <div class="empty-state">
+      <svg width="40" height="40" viewBox="0 0 16 16" fill="none" stroke="#6B7EBD" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8" cy="8" r="6"/>
+        <path d="M8 5v3"/>
+        <circle cx="8" cy="10.5" r="0.5" fill="#6B7EBD"/>
+      </svg>
+      <p>Nenhum alerta por enquanto.</p>
+    </div>
+  <% else %>
+    <% @alerts.each do |alert| %>
+      <%= render alert %>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New alert", new_alert_path %>

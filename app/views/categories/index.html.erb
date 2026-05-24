@@ -1,16 +1,35 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Categories" %>
-
-<h1>Categories</h1>
-
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
+<% content_for :title, "Categorias" %>
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Categorias</h1>
+    <span class="page-subtitle">Gerencie as categorias de despesas</span>
+  </div>
+  <%= link_to "Nova categoria", new_category_path, class: "btn-primary" %>
+</div>
+<div class="card">
+  <% if @categories.empty? %>
+    <div class="empty-state">
+      <svg width="40" height="40" viewBox="0 0 16 16" fill="none" stroke="#6B7EBD" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="5" height="5" rx="1"/>
+        <rect x="9" y="2" width="5" height="5" rx="1"/>
+        <rect x="2" y="9" width="5" height="5" rx="1"/>
+        <rect x="9" y="9" width="5" height="5" rx="1"/>
+      </svg>
+      <p>Nenhuma categoria cadastrada ainda.</p>
+      <%= link_to "Criar primeira categoria", new_category_path, class: "link" %>
+    </div>
+  <% else %>
+    <div class="category-list">
+      <% @categories.each do |category| %>
+        <div class="category-list__item">
+          <%= render category %>
+          <div class="expense-list__actions">
+            <%= link_to "Ver", category, class: "btn-ghost btn-ghost--sm" %>
+            <%= link_to "Editar", edit_category_path(category), class: "btn-ghost btn-ghost--sm" %>
+            <%= button_to "Excluir", category, method: :delete, class: "btn-danger btn-danger--sm", form: { data: { turbo_confirm: "Tem certeza?" } } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New category", new_category_path %>
