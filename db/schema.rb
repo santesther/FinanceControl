@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_22_153354) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_25_125240) do
   create_table "alerts", force: :cascade do |t|
     t.string "alert_type"
     t.string "channel"
@@ -48,6 +48,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_22_153354) do
   create_table "monthly_goals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.decimal "current_balance"
+    t.decimal "initial_balance"
     t.integer "month"
     t.decimal "savings_target"
     t.decimal "spending_limit"
