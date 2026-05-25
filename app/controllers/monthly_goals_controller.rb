@@ -65,6 +65,6 @@ class MonthlyGoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def monthly_goal_params
-      params.expect(monthly_goal: [ :user_id, :year, :month, :savings_target, :spending_limit, :balance, :current_balance ])
+      params.expect(monthly_goal: [ :user_id, :year, :month, :savings_target, :spending_limit, :balance, :current_balance, :initial_balance ])
     end
 end
